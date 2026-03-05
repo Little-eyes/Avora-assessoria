@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avora Assessoria - Revisional de Contratos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --preto: #1a1a1a;
+            --amarelo: #FFD700;
+            --branco: #ffffff;
+            --cinza: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--preto);
+        }
+
+        /* Header */
+        header {
+            background: var(--preto);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--branco) 50%, var(--amarelo) 50%);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: var(--preto);
+            font-size: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--branco);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: var(--amarelo);
+        }
+
+        .logo-text {
+            color: var(--branco);
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .logo-text span {
+            color: var(--amarelo);
+            font-size: 10px;
+            display: block;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--preto) 0%, #2d2d2d 100%);
+            color: var(--branco);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: var(--amarelo);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: var(--amarelo);
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--amarelo);
+            color: var(--preto);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Lead Capture Section */
+        .lead-capture {
+            background: var(--cinza);
+            padding: 80px 0;
+        }
+
+        .lead-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--branco);
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .lead-info {
+            background: var(--preto);
+            color: var(--branco);
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .lead-info h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--amarelo);
+        }
+
+        .lead-info p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .benefits {
+            list-style: none;
+        }
+
+        .benefits li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--amarelo);
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .lead-form {
+            padding: 60px 40px;
+        }
+
+        .lead-form h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--preto);
+        }
+
+        .lead-form > p {
+            margin-bottom: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--preto);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--amarelo);
+        }
+
+        .form-group input::placeholder {
+            color: #999;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 18px;
+            background: var(--amarelo);
+            color: var(--preto);
+            border: none;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .privacy {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: var(--branco);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--preto);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 18px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--cinza);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--amarelo);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--preto);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--preto);
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--preto) 0%, #2d2d2d 100%);
+            color: var(--branco);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--amarelo);
+        }
+
+        .contact > p {
+            font-size: 18px;
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--amarelo);
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--amarelo);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: var(--preto);
+        }
+
+        .contact-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--branco);
+        }
+
+        .contact-card p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        .btn-contact {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--amarelo);
+            color: var(--preto);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 5px;
+            transition: transform 0.3s;
+            font-size: 14px;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: var(--branco);
+        }
+
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: var(--branco);
+        }
+
+        .btn-email {
+            background: var(--amarelo);
+            color: var(--preto);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: var(--branco);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        .footer-logo {
+            margin-bottom: 15px;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 24px;
+        }
+
+        .footer-logo .logo-text span {
+            font-size: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-left {
+                gap: 15px;
+            }
+
+            .logo-text {
+                font-size: 16px;
+            }
+
+            .logo-text span {
+                font-size: 9px;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 32px;
+            }
+
+            .lead-container {
+                grid-template-columns: 1fr;
+            }
+
+            .lead-info {
+                padding: 40px 30px;
+            }
+
+            .lead-form {
+                padding: 40px 30px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .error-message {
+            display: none;
+            background: #f44336;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="nav-left">
+                <!-- Logo -->
+                <div class="logo">
+                    <!-- Substitua o src pela URL da sua imagem de logo -->
+                    <!-- <img src="sua-logo.png" alt="Avora Assessoria" class="logo-img"> -->
+                    <div class="logo-placeholder">A</div>
+                    <div class="logo-text">
+                        AVORA
+                        <span>ASSESSORIA</span>
+                    </div>
+                </div>
+                
+                <!-- Menu de Navegação -->
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#captacao">Simulação</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Recupere até <span>70%</span> dos juros abusivos do seu financiamento</h1>
+                    <p>Especialistas em revisional de contratos bancários. Economize milhares de reais e volte a respirar tranquilo.</p>
+                    <a href="#captacao" class="btn">QUERO MINHA ANÁLISE GRATUITA</a>
+                </div>
+                <div class="hero-image">
+                    <!-- Espaço para imagem -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Capture Section -->
+    <section class="lead-capture" id="captacao">
+        <div class="container">
+            <div class="lead-container">
+                <div class="lead-info">
+                    <h2>Solicite sua Análise Gratuita</h2>
+                    <p>Preencha o formulário e nossos especialistas entrarão em contato em até 24 horas para avaliar seu caso.</p>
+                    <ul class="benefits">
+                        <li>Análise completa do seu contrato</li>
+                        <li>Sem compromisso</li>
+                        <li>Atendimento personalizado</li>
+                        <li>Parcelamento facilitado</li>
+                        <li>Resultados comprovados</li>
+                    </ul>
+                </div>
+                <div class="lead-form">
+                    <div class="success-message" id="successMessage">
+                        ✓ Cadastro realizado com sucesso! Entraremos em contato em breve.
+                    </div>
+                    <div class="error-message" id="errorMessage">
+                        ✗ Erro ao enviar. Tente novamente ou nos chame no WhatsApp.
+                    </div>
+                    <h3>Fale Conosco</h3>
+                    <p>Preencha seus dados abaixo:</p>
+                    <form id="leadForm">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo *</label>
+                            <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail *</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone / WhatsApp *</label>
+                            <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+                        </div>
+                        <button type="submit" class="btn-submit">QUERO ECONOMIZAR AGORA</button>
+                        <p class="privacy">🔒 Seus dados estão seguros e não serão compartilhados</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+                <p>Soluções completas para revisão dos seus contratos</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏦</div>
+                    <h3>Revisional Bancária</h3>
+                    <p>Identificamos e combatemos juros abusivos em financiamentos de veículos, imóveis e empréstimos pessoais.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Recálculo de Contratos</h3>
+                    <p>Análise detalhada do seu contrato para encontrar irregularidades e reduzir significativamente suas parcelas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚖️</div>
+                    <h3>Ação Judicial</h3>
+                    <p>Acompanhamento completo do processo judicial com equipe especializada em direito bancário.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <p>Estamos prontos para ajudar você a economizar. Escolha a melhor forma de falar conosco!</p>
+            
+            <div class="contact-grid">
+                <!-- WhatsApp -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p>Fale conosco diretamente pelo WhatsApp. Resposta rápida!</p>
+                    <a href="https://w.app/l9hcy1" target="_blank" class="btn-contact btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Conversar Agora
+                    </a>
+                </div>
+
+                <!-- Instagram -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>Siga-nos e fique por dentro das novidades e dicas.</p>
+                    <a href="https://www.instagram.com/avoraassessoria/p/DUqnl5-kQ1V/" target="_blank" class="btn-contact btn-instagram">
+                        <i class="fab fa-instagram"></i> Seguir
+                    </a>
+                </div>
+
+                <!-- Email -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>E-mail</h3>
+                    <p>Envie sua dúvida ou solicitação por e-mail.</p>
+                    <a href="mailto:avoraassessoria@gmail.com" class="btn-contact btn-email">
+                        <i class="fas fa-envelope"></i> Enviar E-mail
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <div class="logo-text">
+                    AVORA
+                    <span>ASSESSORIA</span>
+                </div>
+            </div>
+            <p>&copy; 2026 Avora Assessoria. Todos os direitos reservados.</p>
+            <p style="margin-top: 10px; font-size: 12px;">CNPJ: 51.113.390/0001-47</p>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================
+        // CONFIGURAÇÃO - COLE SUA URL DO GOOGLE APPS SCRIPT ABAIXO
+        // ============================================
+        const SCRIPT_URL = 'COLE_SUA_URL_DO_APPS_SCRIPT_AQUI';
+        // ============================================
+
+        // Máscara para telefone
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+                value = value.replace(/(\d)(\d{4})$/, '$1-$2');
+                e.target.value = value;
+            }
+        });
+
+        // Envio do formulário para Google Sheets
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = document.querySelector('.btn-submit');
+            const originalText = btn.innerText;
+            const successMsg = document.getElementById('successMessage');
+            const errorMsg = document.getElementById('errorMessage');
+            
+            // Esconde mensagens anteriores
+            successMsg.style.display = 'none';
+            errorMsg.style.display = 'none';
+            
+            // Muda estado do botão
+            btn.innerText = 'Enviando...';
+            btn.disabled = true;
+
+            const formData = new FormData(e.target);
+
+            fetch(SCRIPT_URL, { 
+                method: 'POST', 
+                body: formData
+            })
+            .then(response => {
+                // Sucesso
+                successMsg.style.display = 'block';
+                e.target.reset(); // Limpa o formulário
+                
+                // Scroll suave até a mensagem
+                successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+                // Esconde mensagem após 5 segundos
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 5000);
+            })
+            .catch(error => {
+                // Erro
+                console.error('Error!', error.message);
+                errorMsg.style.display = 'block';
+                errorMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+                setTimeout(() => {
+                    errorMsg.style.display = 'none';
+                }, 5000);
+            })
+            .finally(() => {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            });
+        });
+
+        // Smooth scroll para links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
